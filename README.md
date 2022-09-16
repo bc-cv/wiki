@@ -1,4 +1,4 @@
-Welcome to Visual Computing Group @ Harvard SEAS
+Welcome to Computer Vision Group @ Boston College
 
 
 # Create Environment
