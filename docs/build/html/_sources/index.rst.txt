@@ -15,6 +15,7 @@ Welcome to Visual Computing Group
    :maxdepth: 1
    :caption: Computation
    
+   computation/andromeda_rc
    computation/machine_rc
    computation/machine_group
    computation/machine_local
