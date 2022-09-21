@@ -5,7 +5,9 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Running Jupyter lab on RC cluster &mdash; Intern-Wiki  documentation</title>
-      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/_static/css/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -101,10 +103,10 @@
            <div itemprop="articleBody">
              
   <section id="running-jupyter-lab-on-rc-cluster">
-<h1>Running Jupyter lab on RC cluster<a class="headerlink" href="#running-jupyter-lab-on-rc-cluster" title="Permalink to this heading">¶</a></h1>
+<h1>Running Jupyter lab on RC cluster<a class="headerlink" href="#running-jupyter-lab-on-rc-cluster" title="Permalink to this heading"></a></h1>
 <p>All credit to  <strong>Nils Wendt</strong> for the method.</p>
 <section id="part-1">
-<h2>Part 1<a class="headerlink" href="#part-1" title="Permalink to this heading">¶</a></h2>
+<h2>Part 1<a class="headerlink" href="#part-1" title="Permalink to this heading"></a></h2>
 <ol class="arabic">
 <li><p>Login to your RC cluster</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ssh &lt;username&gt;@login.rc.fas.harvard.edu
@@ -130,7 +132,7 @@
 <p>You are all set and you only need to launch Jupyter Lab with the port number specified previously ! We will continue working from the last terminal which is now running on the partition specified earlier.</p>
 </section>
 <section id="part-2">
-<h2>Part 2<a class="headerlink" href="#part-2" title="Permalink to this heading">¶</a></h2>
+<h2>Part 2<a class="headerlink" href="#part-2" title="Permalink to this heading"></a></h2>
 <ol class="arabic">
 <li><p>Make sure to load anaconda module on your RC</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>module load Anaconda3/5.0.1-fasrc02
@@ -153,7 +155,7 @@ source activate &lt;environment&gt;
 </ol>
 </section>
 <section id="useful-aliases-and-bash-functions">
-<h2>Useful aliases and bash functions<a class="headerlink" href="#useful-aliases-and-bash-functions" title="Permalink to this heading">¶</a></h2>
+<h2>Useful aliases and bash functions<a class="headerlink" href="#useful-aliases-and-bash-functions" title="Permalink to this heading"></a></h2>
 <ol class="arabic">
 <li><p>Local computer</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>fwport() { ssh -L ${1}:localhost:${1} &lt;username&gt;@login.rc.fas.harvard.edu; }
@@ -189,7 +191,7 @@ fwjl() { jupyter lab --no-browser --port=$1; }
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, VCG, Harvard University.</p>
+    <p>&#169; Copyright 2022, BCCV, Boston College.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
