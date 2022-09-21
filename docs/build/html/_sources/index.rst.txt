@@ -1,4 +1,4 @@
-Welcome to Visual Computing Group
+Welcome to Boston College Computer Vision Group
 ===========================================
 
 .. toctree::
