@@ -16,8 +16,6 @@ Welcome to Visual Computing Group
    :caption: Computation
    
    computation/andromeda_rc
-   computation/machine_rc
-   computation/machine_group
    computation/machine_local
    computation/jupyter_on_cluster
    computation/tutorial
@@ -28,5 +26,5 @@ Welcome to Visual Computing Group
    :caption: Data
    
    data/data_em.rst
-   data/data_ivf.rst
+   data/data_exm.rst
    data/data_cycif.rst

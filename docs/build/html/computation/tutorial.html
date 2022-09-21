@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rhoana2 Tutorials &mdash; Intern-Wiki  documentation</title>
+  <title>Tutorials &mdash; Intern-Wiki  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/_static/css/custom.css" type="text/css" />
@@ -55,8 +55,6 @@
 <li class="toctree-l2"><a class="reference internal" href="andromeda_rc.html#slurm">SLURM</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="machine_rc.html">Harvard RC server</a></li>
-<li class="toctree-l1"><a class="reference internal" href="machine_group.html">Group server (hp03 machine)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine_local.html">Local Machine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="jupyter_on_cluster.html">Running Jupyter lab on RC cluster</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="jupyter_on_cluster.html#part-1">Part 1</a></li>
@@ -64,7 +62,11 @@
 <li class="toctree-l2"><a class="reference internal" href="jupyter_on_cluster.html#useful-aliases-and-bash-functions">Useful aliases and bash functions</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Rhoana2 Tutorials</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Pytorch Connectomics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">ExM Registration</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Data</span></p>
 <ul>
@@ -74,7 +76,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../data/data_em.html#lucchi-mitochondria">LUCCHI: Mitochondria</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../data/data_ivf.html">IVF Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/data_exm.html">EM-Connectomics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data/data_exm.html#snemi3d-segmentation">SNEMI3D: Segmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/data_exm.html#cremi-segmentation-synapse">CREMI: Segmentation+Synapse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/data_exm.html#lucchi-mitochondria">LUCCHI: Mitochondria</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../data/data_cycif.html">CYCIF Datasets</a></li>
 </ul>
 
@@ -92,7 +99,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Rhoana2 Tutorials</li>
+      <li>Tutorials</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/computation/tutorial.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -102,9 +109,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="rhoana2-tutorials">
-<h1>Rhoana2 Tutorials<a class="headerlink" href="#rhoana2-tutorials" title="Permalink to this heading"></a></h1>
-<p>Here is the tutorial for our <a class="reference external" href="https://www.rhoana.org/rhoana2/build/html/index.html">Rhoana2</a> Connectomics pipeline.</p>
+  <section id="tutorials">
+<h1>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this heading"></a></h1>
+<section id="id1">
+<h2><a class="reference external" href="https://connectomics.readthedocs.io/">Pytorch Connectomics</a><a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>Pytorch-based 2D/3D segmentation pipeline for EM Connectomics and other microscope image modalities.</p>
+</section>
+<section id="id2">
+<h2><a class="reference external" href="https://github.com/donglaiw/ExM-Toolbox">ExM Registration</a><a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>Sitk-based 2D/3D registration pipeline for expansion microscope images.</p>
+</section>
 </section>
 
 
