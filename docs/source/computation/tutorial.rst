@@ -1,5 +1,11 @@
-Rhoana2 Tutorials
+Tutorials
 ===========================
 
-Here is the tutorial for our `Rhoana2 <https://www.rhoana.org/rhoana2/build/html/index.html>`_ Connectomics pipeline.
+`Pytorch Connectomics <https://connectomics.readthedocs.io/>`_ 
+------
+Pytorch-based 2D/3D segmentation pipeline for EM Connectomics and other microscope image modalities.
 
+
+`ExM Registration <https://github.com/donglaiw/ExM-Toolbox>`_ 
+------
+Sitk-based 2D/3D registration pipeline for expansion microscope images.
