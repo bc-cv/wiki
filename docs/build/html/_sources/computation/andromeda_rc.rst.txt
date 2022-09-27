@@ -10,7 +10,7 @@ Connecting to the cluster
    
       > ssh {user}@andromeda.bc.edu -p 22022
 
-- To SSH into ``{node}`` **in the ``l001`` shell**
+- To SSH into ``{node}`` in the ``l001`` shell
 
    .. code-block:: none
    
@@ -82,6 +82,7 @@ Conda
 It is recommended to use Conda to manage Python packages to ensure reproducibility and minimize conflicts between project dependencies. For a primer on Conda see the following `cheatsheet <https://conda.io/projects/conda/en/latest/user-guide/cheatsheet.html>`_ To use Conda, load the ``anaconda`` module.
 
 Useful commands:
+
 - List all environments
 
    .. code-block:: none
@@ -119,3 +120,61 @@ Although long running tasks can technically be run on ``l001`` (by using ``scree
    .. code-block:: none
 
       > sinfo
+- To view detailed stats of nodes on all partitions (e.g., to find available RAM/number of cores per node)
+
+   .. code-block:: none
+
+      > sinfo --Node --long
+- To view all queued jobs
+
+   .. code-block:: none
+  
+      > squeue
+- To view your queued jobs
+
+   .. code-block:: none
+
+      > squeue -u {user}
+- To submit a job
+
+   .. code-block:: none
+
+      > sbatch {job_script}
+
+   An example SLURM job script (`more details <https://slurm.schedmd.com/sbatch.html>`_):
+
+      .. code-block:: bash
+
+         #!/bin/tcsh -e
+         #SBATCH --job-name=example-job # job name
+         #SBATCH --nodes=1 # how many nodes to use for this job
+         #SBATCH --ntasks=1
+         #SBATCH --cpus-per-task 48 # how many CPU-cores to use for this job (see )
+         #SBATCH --mem=190GB # how much RAM to allocate
+         #SBATCH --time=120:00:00 # job execution time limit hrs:min:sec
+         #SBATCH --mail-type=BEGIN,END,FAIL. # mail events (NONE, BEGIN, END, FAIL, ALL)
+         #SBATCH --mail-user={user}@bc.edu # where to send mail
+         #SBATCH --partition=partial_nodes,gpuv100,gpua100 # see sinfo for available partitions
+
+         #SBATCH --output=main_%j.out 
+
+         module purge # clear all modules
+         module load slurm # to allow sub-scripts to use SLURM commands
+         module load cuda11.2 # for gpuv100/gpua100 partitions only
+
+         module load anaconda
+         conda activate clean_dendrite
+
+         hostname # print the node which the job is running on
+
+         ...
+
+- To run a job script `interactively <https://stackoverflow.com/questions/43767866/slurm-srun-vs-sbatch-and-their-parameters>`_ (e.g., for ``pdb`` debugging)
+
+   code-block:: none
+
+      > srun {flags} {job_script}
+   
+   Note that ``srun`` does not read the ``#SBATCH`` directives in the job script; flags must be specified manually.
+
+
