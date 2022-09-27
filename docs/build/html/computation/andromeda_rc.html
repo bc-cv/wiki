@@ -312,10 +312,9 @@ hostname <span class="c1"># print the node which the job is running on</span>
 </li>
 <li><p>To run a job script <a class="reference external" href="https://stackoverflow.com/questions/43767866/slurm-srun-vs-sbatch-and-their-parameters">interactively</a> (e.g., for <code class="docutils literal notranslate"><span class="pre">pdb</span></code> debugging)</p>
 <blockquote>
-<div><p>code-block:: none</p>
-<blockquote>
-<div><p>&gt; srun {flags} {job_script}</p>
-</div></blockquote>
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; srun {flags} {job_script}
+</pre></div>
+</div>
 <p>Note that <code class="docutils literal notranslate"><span class="pre">srun</span></code> does not read the <code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code> directives in the job script; flags must be specified manually.</p>
 </div></blockquote>
 </li>

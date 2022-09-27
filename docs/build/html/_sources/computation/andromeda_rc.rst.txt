@@ -171,7 +171,7 @@ Although long running tasks can technically be run on ``l001`` (by using ``scree
 
 - To run a job script `interactively <https://stackoverflow.com/questions/43767866/slurm-srun-vs-sbatch-and-their-parameters>`_ (e.g., for ``pdb`` debugging)
 
-   code-block:: none
+   .. code-block:: none
 
       > srun {flags} {job_script}
    
