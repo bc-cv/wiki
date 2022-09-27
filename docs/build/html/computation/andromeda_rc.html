@@ -110,35 +110,35 @@
 <ul>
 <li><p>Secure SHell (SSH) into the root node of Andromeda (<code class="docutils literal notranslate"><span class="pre">l001</span></code>)</p>
 <blockquote>
-<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ssh {user}@andromeda.bc.edu -p 22022
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; ssh {user}@andromeda.bc.edu -p 22022
 </pre></div>
 </div>
 </div></blockquote>
 </li>
-<li><p>To SSH into <code class="docutils literal notranslate"><span class="pre">{node}</span></code> <strong>in the ``l001``` shell</strong></p>
+<li><p>To SSH into <code class="docutils literal notranslate"><span class="pre">{node}</span></code> <strong>in the ``l001`` shell</strong></p>
 <blockquote>
-<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ssh {node}
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; ssh {node}
 </pre></div>
 </div>
 </div></blockquote>
 </li>
 <li><p>To forward X11 from <code class="docutils literal notranslate"><span class="pre">l001</span></code> (not recommended; either host a webpage whose port can be exposed or setup NoMachine)</p>
 <blockquote>
-<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ssh -X {user}@andromeda.bc.edu -p 22022
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; ssh -X {user}@andromeda.bc.edu -p 22022
 </pre></div>
 </div>
 </div></blockquote>
 </li>
 <li><p>Expose a port on <code class="docutils literal notranslate"><span class="pre">l001</span></code> (e.g., to access a Jupyter/Neuroglancer server)</p>
 <blockquote>
-<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ssh -L {local_port}:localhost:{remote_port} -N -T {user}@andromeda.bc.edu -p 22022
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; ssh -L {local_port}:localhost:{remote_port} -N -T {user}@andromeda.bc.edu -p 22022
 </pre></div>
 </div>
 </div></blockquote>
 </li>
 <li><p>Expose a port on <code class="docutils literal notranslate"><span class="pre">{node}</span></code> (e.g., to access a service run by a job)</p>
 <blockquote>
-<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ssh -t -t {user}@andromeda.bc.edu -p 22022 -L {local_port}:localhost:{unused_port} ssh -T -N g006 -L {unused_port}:localhost:{remote_port}
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; ssh -t -t {user}@andromeda.bc.edu -p 22022 -L {local_port}:localhost:{unused_port} ssh -T -N g006 -L {unused_port}:localhost:{remote_port}
 </pre></div>
 </div>
 </div></blockquote>
@@ -148,7 +148,7 @@
 <div><ul>
 <li><p>Linux:</p>
 <blockquote>
-<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo umount -l {local_mount_point}; sshfs {user}@andromeda.bc.edu:{remote_path} {local_mount_point} -p 22022
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; sudo umount -l {local_mount_point}; sshfs {user}@andromeda.bc.edu:{remote_path} {local_mount_point} -p 22022
 </pre></div>
 </div>
 </div></blockquote>
@@ -173,27 +173,85 @@
 <section id="modules">
 <h2>Modules<a class="headerlink" href="#modules" title="Permalink to this heading"></a></h2>
 <p>Andromeda uses the <a class="reference external" href="https://modules.readthedocs.io/en/latest/">Modules package</a> to manage packages that influence the shell environment.</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">avail</span></code>: list available modules</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">{module}</span></code>: load a module, making its binaries available</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">purge</span></code>: unload all modules</p></li>
+<ul>
+<li><p>List available modules</p>
+<blockquote>
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; module avail
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Load a module to make commands available</p>
+<blockquote>
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; module load {module}
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Unload all modules</p>
+<blockquote>
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; module purge
+</pre></div>
+</div>
+</div></blockquote>
+</li>
 </ul>
-<p>To avoid having to load modules every time you SSH, you can append the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span></code> commands to the end of your <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code> file.</p>
+<p>To avoid having to load modules every time you SSH, you can append the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span></code> commands at the end of your <code class="docutils literal notranslate"><span class="pre">~/.tcshrc</span></code> file.</p>
 </section>
 <section id="conda">
 <h2>Conda<a class="headerlink" href="#conda" title="Permalink to this heading"></a></h2>
-<p>It is recommended to use Conda to manage Python packages to ensure reproducibility and minimize conflicts between project dependencies. For a primer on Conda see the following <a class="reference external" href="https://conda.io/projects/conda/en/latest/user-guide/cheatsheet.html">cheatsheet</a>
-Useful commands:
-- <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">info</span> <span class="pre">--envs</span></code>: list available environments
-- <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">-n</span> <span class="pre">{env_name}</span> <span class="pre">python={version}</span></code>: create a new environment
-- <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">{env_name}</span></code>: activate an environment
-- <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">{package1}</span> <span class="pre">{package2}</span> <span class="pre">...</span></code>: install packages in the current environment
-- <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">uninstall</span> <span class="pre">{package1}</span> <span class="pre">{package2}</span> <span class="pre">...</span></code>: uninstall packages in the current environment</p>
-<p>Using <a class="reference external" href="https://mamba.readthedocs.io/en/latest/installation.html">Mamba</a> (a drop-in replacement for <code class="docutils literal notranslate"><span class="pre">conda</span></code>) can significantly speed up package installation.</p>
+<p>It is recommended to use Conda to manage Python packages to ensure reproducibility and minimize conflicts between project dependencies. For a primer on Conda see the following <a class="reference external" href="https://conda.io/projects/conda/en/latest/user-guide/cheatsheet.html">cheatsheet</a> To use Conda, load the <code class="docutils literal notranslate"><span class="pre">anaconda</span></code> module.</p>
+<p>Useful commands:
+- List all environments</p>
+<blockquote>
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; conda info --envs
+</pre></div>
+</div>
+</div></blockquote>
+<ul>
+<li><p>Create a new environment</p>
+<blockquote>
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; conda create --name {env_name} python={version}
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Activate an environment</p>
+<blockquote>
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; conda activate {env_name}
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Install packages in current environment</p>
+<blockquote>
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; conda install {package1} {package2} ...
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Uninstall packages in current environment</p>
+<blockquote>
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; conda uninstall {package1} {package2} ...
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+<p>Using <a class="reference external" href="https://mamba.readthedocs.io/en/latest/installation.html">Mamba</a> (a drop-in replacement for Conda) can significantly speed up package installation.</p>
 </section>
 <section id="slurm">
 <h2>SLURM<a class="headerlink" href="#slurm" title="Permalink to this heading"></a></h2>
-<p>Although long running tasks can technically be run on <code class="docutils literal notranslate"><span class="pre">l001</span></code> (by using <code class="docutils literal notranslate"><span class="pre">screen</span></code> or <code class="docutils literal notranslate"><span class="pre">tmux</span></code>), computationally intensive jobs should be run through SLURM scheduler.</p>
+<p>Although long running tasks can technically be run on <code class="docutils literal notranslate"><span class="pre">l001</span></code> (by using <code class="docutils literal notranslate"><span class="pre">screen</span></code> or <code class="docutils literal notranslate"><span class="pre">tmux</span></code>), computationally intensive jobs should be run through SLURM scheduler. To use SLURM, load the <code class="docutils literal notranslate"><span class="pre">slurm</span></code> module.</p>
+<ul>
+<li><p>To view statuses of nodes on all partitions (e.g., to find idle partitions)</p>
+<blockquote>
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; sinfo
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
 </section>
 </section>
 
