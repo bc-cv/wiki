@@ -32,7 +32,7 @@ Connecting to the cluster
 
    .. code-block:: none
    
-      > ssh -t -t {user}@andromeda.bc.edu -p 22022 -L {local_port}:localhost:{unused_port} ssh -T -N g006 -L {unused_port}:localhost:{remote_port}
+      > ssh -t -t {user}@andromeda.bc.edu -p 22022 -L {local_port}:localhost:{unused_port} ssh -T -N {node} -L {unused_port}:localhost:{remote_port}
 
 - To mount the cluster's filesystem locally (e.g., enabling use of local development environment)
 

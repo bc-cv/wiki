@@ -140,7 +140,7 @@
 </li>
 <li><p>Expose a port on <code class="docutils literal notranslate"><span class="pre">{node}</span></code> (e.g., to access a service run by a job)</p>
 <blockquote>
-<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; ssh -t -t {user}@andromeda.bc.edu -p 22022 -L {local_port}:localhost:{unused_port} ssh -T -N g006 -L {unused_port}:localhost:{remote_port}
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; ssh -t -t {user}@andromeda.bc.edu -p 22022 -L {local_port}:localhost:{unused_port} ssh -T -N {node} -L {unused_port}:localhost:{remote_port}
 </pre></div>
 </div>
 </div></blockquote>
