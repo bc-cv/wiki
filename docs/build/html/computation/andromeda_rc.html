@@ -280,8 +280,9 @@
 <div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; sbatch {job_script}
 </pre></div>
 </div>
+</blockquote>
 <p>An example SLURM job script (<a class="reference external" href="https://slurm.schedmd.com/sbatch.html">more details</a>):</p>
-<blockquote>
+<p>Notice: the following lines start with "#" are not command lines and shouldn't be removed!</p>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/tcsh -e</span>
 <span class="c1">#SBATCH --job-name=example-job # job name</span>
 <span class="c1">#SBATCH --nodes=1 # how many nodes to use for this job</span>
