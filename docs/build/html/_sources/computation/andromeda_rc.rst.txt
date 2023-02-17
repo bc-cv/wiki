@@ -4,11 +4,19 @@ The `Andromeda Linux Cluster <https://www.bc.edu/bc-web/offices/its/services/res
 
 Connecting to the cluster
 -------------------------
+- If you are off campus, connect to `Eagle VPN <https://bcservices.bc.edu/service/cisco-anyconnect-vpn>`_ (Linux/macOS/Windows supported) first. Alternatively, on Linux systems, you can use `OpenConnect <https://www.infradead.org/openconnect/>`_ with the following command:
+
+   .. code-block:: none
+
+      > printf "{password}\n1" | openconnect -u "{user}" --passwd-on-stdin eaglevpn.bc.edu
+
+   where ``{password}`` is your BC password and ``{user}`` is your BC username (without @bc.edu).
+
 - Secure SHell (SSH) into the root node of Andromeda (``l001``)
 
    .. code-block:: none
    
-      > ssh {user}@andromeda.bc.edu -p 22022
+      > ssh {user}@andromeda.bc.edu
 
 - To SSH into ``{node}`` in the ``l001`` shell
 
@@ -20,19 +28,19 @@ Connecting to the cluster
 
    .. code-block:: none
    
-      > ssh -X {user}@andromeda.bc.edu -p 22022
+      > ssh -X {user}@andromeda.bc.edu
 
 - Expose a port on ``l001`` (e.g., to access a Jupyter/Neuroglancer server)
 
    .. code-block:: none
    
-      > ssh -L {local_port}:localhost:{remote_port} -N -T {user}@andromeda.bc.edu -p 22022
+      > ssh -L {local_port}:localhost:{remote_port} -N -T {user}@andromeda.bc.edu
 
 - Expose a port on ``{node}`` (e.g., to access a service run by a job)
 
    .. code-block:: none
    
-      > ssh -t -t {user}@andromeda.bc.edu -p 22022 -L {local_port}:localhost:{unused_port} ssh -T -N {node} -L {unused_port}:localhost:{remote_port}
+      > ssh -t -t {user}@andromeda.bc.edu -L {local_port}:localhost:{unused_port} ssh -T -N {node} -L {unused_port}:localhost:{remote_port}
 
 - To mount the cluster's filesystem locally (e.g., enabling use of local development environment)
 
@@ -40,7 +48,7 @@ Connecting to the cluster
 
       .. code-block:: none
       
-         > sudo umount -l {local_mount_point}; sshfs {user}@andromeda.bc.edu:{remote_path} {local_mount_point} -p 22022
+         > sudo umount -l {local_mount_point}; sshfs {user}@andromeda.bc.edu:{remote_path} {local_mount_point}
 
    - MacOS: Install `FUSE for macOS <https://osxfuse.github.io/>`_ and their SSHFS plugin
    - Windows: Install `sshfs-win <https://github.com/winfsp/sshfs-win>`_
@@ -177,4 +185,12 @@ Although long running tasks can technically be run on ``l001`` (by using ``scree
    
    Note that ``srun`` does not read the ``#SBATCH`` directives in the job script; flags must be specified manually.
 
+FAQ
+---
+- **Q:** My SLURM jobs emit ``ERROR: No such file or directory on '/cm/local/modulefiles/slurm/slurm/19.05.8'``
 
+   **A:** Replace ``module load slurm`` with ``module load slurm/slurm/19.05.7`` in ``.bashrc`` and ``.tcshrc``
+
+- **Q:** My SLURM jobs running Python raises ``ImportError:`` despite having ``module load anaconda; conda activate {my_env}``
+
+   **A:** Try adding ``which python`` to the beginning of the script to see which Python binary is being used. If it is not the binary of your conda environment, hardcode the path to the Python binary.

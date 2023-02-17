@@ -53,6 +53,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#modules">Modules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#conda">Conda</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#slurm">SLURM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#faq">FAQ</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="machine_local.html">Local Machine</a></li>
@@ -110,9 +111,17 @@
 <section id="connecting-to-the-cluster">
 <h2>Connecting to the cluster<a class="headerlink" href="#connecting-to-the-cluster" title="Permalink to this heading"></a></h2>
 <ul>
+<li><p>If you are off campus, connect to <a class="reference external" href="https://bcservices.bc.edu/service/cisco-anyconnect-vpn">Eagle VPN</a> (Linux/macOS/Windows supported) first. Alternatively, on Linux systems, you can use <a class="reference external" href="https://www.infradead.org/openconnect/">OpenConnect</a> with the following command:</p>
+<blockquote>
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; printf &quot;{password}\n1&quot; | openconnect -u &quot;{user}&quot; --passwd-on-stdin eaglevpn.bc.edu
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">{password}</span></code> is your BC password and <code class="docutils literal notranslate"><span class="pre">{user}</span></code> is your BC username (without &#64;bc.edu).</p>
+</div></blockquote>
+</li>
 <li><p>Secure SHell (SSH) into the root node of Andromeda (<code class="docutils literal notranslate"><span class="pre">l001</span></code>)</p>
 <blockquote>
-<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; ssh {user}@andromeda.bc.edu -p 22022
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; ssh {user}@andromeda.bc.edu
 </pre></div>
 </div>
 </div></blockquote>
@@ -126,21 +135,21 @@
 </li>
 <li><p>To forward X11 from <code class="docutils literal notranslate"><span class="pre">l001</span></code> (not recommended; either host a webpage whose port can be exposed or setup NoMachine)</p>
 <blockquote>
-<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; ssh -X {user}@andromeda.bc.edu -p 22022
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; ssh -X {user}@andromeda.bc.edu
 </pre></div>
 </div>
 </div></blockquote>
 </li>
 <li><p>Expose a port on <code class="docutils literal notranslate"><span class="pre">l001</span></code> (e.g., to access a Jupyter/Neuroglancer server)</p>
 <blockquote>
-<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; ssh -L {local_port}:localhost:{remote_port} -N -T {user}@andromeda.bc.edu -p 22022
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; ssh -L {local_port}:localhost:{remote_port} -N -T {user}@andromeda.bc.edu
 </pre></div>
 </div>
 </div></blockquote>
 </li>
 <li><p>Expose a port on <code class="docutils literal notranslate"><span class="pre">{node}</span></code> (e.g., to access a service run by a job)</p>
 <blockquote>
-<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; ssh -t -t {user}@andromeda.bc.edu -p 22022 -L {local_port}:localhost:{unused_port} ssh -T -N {node} -L {unused_port}:localhost:{remote_port}
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; ssh -t -t {user}@andromeda.bc.edu -L {local_port}:localhost:{unused_port} ssh -T -N {node} -L {unused_port}:localhost:{remote_port}
 </pre></div>
 </div>
 </div></blockquote>
@@ -150,7 +159,7 @@
 <div><ul>
 <li><p>Linux:</p>
 <blockquote>
-<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; sudo umount -l {local_mount_point}; sshfs {user}@andromeda.bc.edu:{remote_path} {local_mount_point} -p 22022
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; sudo umount -l {local_mount_point}; sshfs {user}@andromeda.bc.edu:{remote_path} {local_mount_point}
 </pre></div>
 </div>
 </div></blockquote>
@@ -280,9 +289,8 @@
 <div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; sbatch {job_script}
 </pre></div>
 </div>
-</blockquote>
 <p>An example SLURM job script (<a class="reference external" href="https://slurm.schedmd.com/sbatch.html">more details</a>):</p>
-<p>Note that the following lines start with "#" are not command lines and shouldn't be removed!</p>
+<blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/tcsh -e</span>
 <span class="c1">#SBATCH --job-name=example-job # job name</span>
 <span class="c1">#SBATCH --nodes=1 # how many nodes to use for this job</span>
@@ -321,6 +329,21 @@ hostname <span class="c1"># print the node which the job is running on</span>
 </li>
 </ul>
 </section>
+<section id="faq">
+<h2>FAQ<a class="headerlink" href="#faq" title="Permalink to this heading"></a></h2>
+<ul>
+<li><p><strong>Q:</strong> My SLURM jobs emit <code class="docutils literal notranslate"><span class="pre">ERROR:</span> <span class="pre">No</span> <span class="pre">such</span> <span class="pre">file</span> <span class="pre">or</span> <span class="pre">directory</span> <span class="pre">on</span> <span class="pre">'/cm/local/modulefiles/slurm/slurm/19.05.8'</span></code></p>
+<blockquote>
+<div><p><strong>A:</strong> Replace <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">slurm</span></code> with <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">slurm/slurm/19.05.7</span></code> in <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> and <code class="docutils literal notranslate"><span class="pre">.tcshrc</span></code></p>
+</div></blockquote>
+</li>
+<li><p><strong>Q:</strong> My SLURM jobs running Python raises <code class="docutils literal notranslate"><span class="pre">ImportError:</span></code> despite having <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">anaconda;</span> <span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">{my_env}</span></code></p>
+<blockquote>
+<div><p><strong>A:</strong> Try adding <code class="docutils literal notranslate"><span class="pre">which</span> <span class="pre">python</span></code> to the beginning of the script to see which Python binary is being used. If it is not the binary of your conda environment, hardcode the path to the Python binary.</p>
+</div></blockquote>
+</li>
+</ul>
+</section>
 </section>
 
 
@@ -334,7 +357,7 @@ hostname <span class="c1"># print the node which the job is running on</span>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, BCCV, Boston College.</p>
+    <p>&#169; Copyright 2023, BCCV, Boston College.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
