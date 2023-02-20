@@ -194,3 +194,13 @@ FAQ
 - **Q:** My SLURM jobs running Python raises ``ImportError:`` despite having ``module load anaconda; conda activate {my_env}``
 
    **A:** Try adding ``which python`` to the beginning of the script to see which Python binary is being used. If it is not the binary of your conda environment, hardcode the path to the Python binary.
+
+- **Q:** My PyTorch model returns incorrect numerical results when running on A100 nodes but work fine on V100 nodes
+
+   **A:** Add the following lines to your Python script (`source <https://discuss.pytorch.org/t/numerical-error-on-a100-gpus/148032>`_):
+
+   .. code-block:: python
+
+      import torch
+      torch.backends.cuda.matmul.allow_tf32 = False
+      torch.backends.cudnn.allow_tf32 = False

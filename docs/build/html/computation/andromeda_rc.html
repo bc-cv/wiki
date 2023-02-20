@@ -342,6 +342,16 @@ hostname <span class="c1"># print the node which the job is running on</span>
 <div><p><strong>A:</strong> Try adding <code class="docutils literal notranslate"><span class="pre">which</span> <span class="pre">python</span></code> to the beginning of the script to see which Python binary is being used. If it is not the binary of your conda environment, hardcode the path to the Python binary.</p>
 </div></blockquote>
 </li>
+<li><p><strong>Q:</strong> My PyTorch model returns incorrect numerical results when running on A100 nodes but work fine on V100 nodes</p>
+<blockquote>
+<div><p><strong>A:</strong> Add the following lines to your Python script (<a class="reference external" href="https://discuss.pytorch.org/t/numerical-error-on-a100-gpus/148032">source</a>):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">matmul</span><span class="o">.</span><span class="n">allow_tf32</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">cudnn</span><span class="o">.</span><span class="n">allow_tf32</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
 </ul>
 </section>
 </section>
