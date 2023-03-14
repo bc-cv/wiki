@@ -2,6 +2,18 @@ Andromeda Linux Cluster
 =======================
 The `Andromeda Linux Cluster <https://www.bc.edu/bc-web/offices/its/services/research-services/linux-cluster.html>`_ runs the SLURM scheduler to execute jobs.
 
+Setup BC ID
+-------------------------
+- Ask Prof. Wei to request a BC ID for you
+
+- Using Initial password,  Go To:
+https://portal.bc.edu/portal/page/portal/MyServices/Login
+The Eagle ID number is the initial password
+
+- If applicable:
+Secondary password – this link is for help with BC Gmail:
+https://www.bc.edu/content/bc-web/offices/its/support/account-network-access/basics.html#secondary_password
+
 Connecting to the cluster
 -------------------------
 - If you are off campus, connect to `Eagle VPN <https://bcservices.bc.edu/service/cisco-anyconnect-vpn>`_ (Linux/macOS/Windows supported) first. Alternatively, on Linux systems, you can use `OpenConnect <https://www.infradead.org/openconnect/>`_ with the following command:
