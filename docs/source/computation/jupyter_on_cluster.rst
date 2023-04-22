@@ -1,79 +1,35 @@
-Running Jupyter lab on RC cluster 
+Running Jupyter lab on Andromeda
 =================================
-All credit to  **Nils Wendt** for the method.
-
-Part 1 
----------------------------------
-#. Login to your RC cluster
+#. Login to Andromeda and forward a port from your local computer to the login node. This port will be used for Jupyter Lab
 
    .. code-block:: none
 
-        ssh <username>@login.rc.fas.harvard.edu
+        ssh -L <port number>:localhost:<port number> <username>@andromeda.bc.edu
     
-#. Launch an interactive job from the cluster with around 8 GO of RAM and a specified time and leave this terminal a side
+#. Launch a batch job from the cluster with the necessary parameters in the desired node. A sample batch file with the required commands are given below
 
    .. code-block:: none
 
-    srun --pty -p cox -t 0-12:00 --mem 8000 /bin/bash
+      #!/bin/tcsh -e
+      #SBATCH --job-name=jupyter_server
+      #SBATCH --nodes=1
+      #SBATCH --cpus-per-task=6
+      #SBATCH --mem=8GB
+      #SBATCH --time=00:10:00
+      #SBATCH --partition=fullnodes48
+      #SBATCH -o jupyter.out # Make sure this parameter is set
 
-#. Forward a port from your local computer to the cluster, this port will be used for Jupyter Lab
-    
-   .. code-block:: none
+      # This will set the jupyter kernel to the right python version
+      # You can alternatively choose to load desired modules
+      conda activate <env>
+      
+      # Do not delete this line
+      # It essentially reverse tunnels a port from the allocated node to the login node
+      ssh -N -n -f -R <port number>:localhost:<port number> $USER@l001 
+      
+      jupyter notebook --no-browser --port=<port number>
 
-    ssh -L <port number>:localhost:<port number> <username>@login.rc.fas.harvard.edu
-
-
-#. In the same termiinal, you should be now on the cluster. Forward a port from the cluster to the interactive job allocated partition. Partition name is obtained from the interactive job terminal, for example ``coxgpu01``. The port number needs to be the **same**, for example ``2626``
-
-   .. code-block:: none
-
-     ssh -L <port number>:localhost:<port number> <partition>
-
-You are all set and you only need to launch Jupyter Lab with the port number specified previously ! We will continue working from the last terminal which is now running on the partition specified earlier.
-
-Part 2
----------------------------------
-#.  Make sure to load anaconda module on your RC
-
-    .. code-block:: none
-
-      module load Anaconda3/5.0.1-fasrc02
-
-#. Create/Activate your conda environment you like to use
-
-   .. code-block:: none
-
-     If not already created : conda create -n <environment>
- 
-     source activate <environment>
-#. Launch Jupyter Lab 
-
-   .. code-block:: none
-
-     jupyter lab --no-browser --port=<port number>
-#. Finally copy the Jupyter Lab link you get on the terminal and paste on your local computer browser. You are all set now.
-
-Useful aliases and bash functions
----------------------------------
-#. Local computer 
-
-   .. code-block:: none
-
-    fwport() { ssh -L ${1}:localhost:${1} <username>@login.rc.fas.harvard.edu; }
-
-#. RC cluster
-
-   .. code-block:: none
-
-    alias loadconda='module load Anaconda3/5.0.1-fasrc02'
+#. Once the job is allocated and running, find the server address in jupyter.out. Paste that in a browser on your local computer and the Jupyter Interface should start up
 
 
-    gpujob() { srun --pty -p cox -t 0-12:00 --mem ${1} /bin/bash; }
-
-    
-    fwport() { ssh -L ${1}:localhost:${1} ${2}; }
-
-    
-    fwjl() { jupyter lab --no-browser --port=$1; }
-
- 
+Ensure that you do not close the terminal with the forwarded port. In case you do close it, forward the port again as shown in step 1 and you should be set. 
