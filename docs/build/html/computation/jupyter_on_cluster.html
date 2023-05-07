@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Running Jupyter lab on RC cluster &mdash; Intern-Wiki  documentation</title>
+  <title>Running Jupyter lab on Andromeda &mdash; Intern-Wiki  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/_static/css/custom.css" type="text/css" />
@@ -58,28 +58,12 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="machine_local.html">Local Machine</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Running Jupyter lab on RC cluster</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#part-1">Part 1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#part-2">Part 2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#useful-aliases-and-bash-functions">Useful aliases and bash functions</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Running Jupyter lab on Andromeda</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorials</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="tutorial.html#id1">Pytorch Connectomics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial.html#id2">ExM Registration</a></li>
 </ul>
 </li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Data</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../data/data_em.html">EM-Connectomics</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../data/data_em.html#snemi3d-segmentation">SNEMI3D: Segmentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/data_em.html#cremi-segmentation-synapse">CREMI: Segmentation+Synapse</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/data_em.html#lucchi-mitochondria">LUCCHI: Mitochondria</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../data/data_exm.html">ExM-Connectomics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data/data_cycif.html">CYCIF Datasets</a></li>
 </ul>
 
         </div>
@@ -96,7 +80,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Running Jupyter lab on RC cluster</li>
+      <li>Running Jupyter lab on Andromeda</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/computation/jupyter_on_cluster.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -106,82 +90,39 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="running-jupyter-lab-on-rc-cluster">
-<h1>Running Jupyter lab on RC cluster<a class="headerlink" href="#running-jupyter-lab-on-rc-cluster" title="Permalink to this heading"></a></h1>
-<p>All credit to  <strong>Nils Wendt</strong> for the method.</p>
-<section id="part-1">
-<h2>Part 1<a class="headerlink" href="#part-1" title="Permalink to this heading"></a></h2>
+  <section id="running-jupyter-lab-on-andromeda">
+<h1>Running Jupyter lab on Andromeda<a class="headerlink" href="#running-jupyter-lab-on-andromeda" title="Permalink to this heading"></a></h1>
 <ol class="arabic">
-<li><p>Login to your RC cluster</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ssh &lt;username&gt;@login.rc.fas.harvard.edu
+<li><p>Login to Andromeda and forward a port from your local computer to the login node. This port will be used for Jupyter Lab</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ssh -L &lt;port number&gt;:localhost:&lt;port number&gt; &lt;username&gt;@andromeda.bc.edu
 </pre></div>
 </div>
 </li>
-<li><p>Launch an interactive job from the cluster with around 8 GO of RAM and a specified time and leave this terminal a side</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>srun --pty -p cox -t 0-12:00 --mem 8000 /bin/bash
+<li><p>Launch a batch job from the cluster with the necessary parameters in the desired node. A sample batch file with the required commands are given below</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#!/bin/tcsh -e
+#SBATCH --job-name=jupyter_server
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=6
+#SBATCH --mem=8GB
+#SBATCH --time=00:10:00
+#SBATCH --partition=fullnodes48
+#SBATCH -o jupyter.out # Make sure this parameter is set
+
+# This will set the jupyter kernel to the right python version
+# You can alternatively choose to load desired modules
+conda activate &lt;env&gt;
+
+# Do not delete this line
+# It essentially reverse tunnels a port from the allocated node to the login node
+ssh -N -n -f -R &lt;port number&gt;:localhost:&lt;port number&gt; $USER@l001
+
+jupyter notebook --no-browser --port=&lt;port number&gt;
 </pre></div>
 </div>
 </li>
-<li><p>Forward a port from your local computer to the cluster, this port will be used for Jupyter Lab</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ssh -L &lt;port number&gt;:localhost:&lt;port number&gt; &lt;username&gt;@login.rc.fas.harvard.edu
-</pre></div>
-</div>
-</li>
-<li><p>In the same termiinal, you should be now on the cluster. Forward a port from the cluster to the interactive job allocated partition. Partition name is obtained from the interactive job terminal, for example <code class="docutils literal notranslate"><span class="pre">coxgpu01</span></code>. The port number needs to be the <strong>same</strong>, for example <code class="docutils literal notranslate"><span class="pre">2626</span></code></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ssh -L &lt;port number&gt;:localhost:&lt;port number&gt; &lt;partition&gt;
-</pre></div>
-</div>
-</li>
+<li><p>Once the job is allocated and running, find the server address in jupyter.out. Paste that in a browser on your local computer and the Jupyter Interface should start up</p></li>
 </ol>
-<p>You are all set and you only need to launch Jupyter Lab with the port number specified previously ! We will continue working from the last terminal which is now running on the partition specified earlier.</p>
-</section>
-<section id="part-2">
-<h2>Part 2<a class="headerlink" href="#part-2" title="Permalink to this heading"></a></h2>
-<ol class="arabic">
-<li><p>Make sure to load anaconda module on your RC</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>module load Anaconda3/5.0.1-fasrc02
-</pre></div>
-</div>
-</li>
-<li><p>Create/Activate your conda environment you like to use</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>If not already created : conda create -n &lt;environment&gt;
-
-source activate &lt;environment&gt;
-</pre></div>
-</div>
-</li>
-<li><p>Launch Jupyter Lab</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>jupyter lab --no-browser --port=&lt;port number&gt;
-</pre></div>
-</div>
-</li>
-<li><p>Finally copy the Jupyter Lab link you get on the terminal and paste on your local computer browser. You are all set now.</p></li>
-</ol>
-</section>
-<section id="useful-aliases-and-bash-functions">
-<h2>Useful aliases and bash functions<a class="headerlink" href="#useful-aliases-and-bash-functions" title="Permalink to this heading"></a></h2>
-<ol class="arabic">
-<li><p>Local computer</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>fwport() { ssh -L ${1}:localhost:${1} &lt;username&gt;@login.rc.fas.harvard.edu; }
-</pre></div>
-</div>
-</li>
-<li><p>RC cluster</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>alias loadconda=&#39;module load Anaconda3/5.0.1-fasrc02&#39;
-
-
-gpujob() { srun --pty -p cox -t 0-12:00 --mem ${1} /bin/bash; }
-
-
-fwport() { ssh -L ${1}:localhost:${1} ${2}; }
-
-
-fwjl() { jupyter lab --no-browser --port=$1; }
-</pre></div>
-</div>
-</li>
-</ol>
-</section>
+<p>Ensure that you do not close the terminal with the forwarded port. In case you do close it, forward the port again as shown in step 1 and you should be set.</p>
 </section>
 
 
