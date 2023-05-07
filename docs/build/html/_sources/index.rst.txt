@@ -1,5 +1,5 @@
 Welcome to Boston College Computer Vision Group
-===========================================
+================================================
 
 .. toctree::
    :titlesonly:
@@ -19,12 +19,3 @@ Welcome to Boston College Computer Vision Group
    computation/machine_local
    computation/jupyter_on_cluster
    computation/tutorial
-
-.. toctree::
-   :glob:
-   :maxdepth: 1
-   :caption: Data
-   
-   data/data_em.rst
-   data/data_exm.rst
-   data/data_cycif.rst
