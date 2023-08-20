@@ -35,7 +35,7 @@ html_theme_options = {
     'logo_only': True,
 }
 
-html_logo = '_static/img/vcg-logo_100.jpg'
+html_logo = '_static/img/bccv-logo_100.png'
 html_static_path = ['_static']
 
 add_module_names = False
