@@ -19,37 +19,6 @@ Users can log into the cluster via Secure Shell. Below are some helpful commands
 
 .. tip:: It is recommended to setup `passwordless SSH login <https://stackoverflow.com/a/21467504/10702372>`_ for both convenience and security
 
-
-- To forward X11 from ``l001`` (not recommended; either host a webpage whose port can be exposed or setup NoMachine)
-
-   .. code-block:: none
-   
-      > ssh -X {user}@andromeda.bc.edu
-
-- Expose a port on ``l001`` (e.g., to access a Jupyter/Neuroglancer server)
-
-   .. code-block:: none
-   
-      > ssh -L {local_port}:localhost:{remote_port} -N -T {user}@andromeda.bc.edu
-
-- Expose a port on ``{node}`` (e.g., to access a service run by a job)
-
-   .. code-block:: none
-   
-      > ssh -t -t {user}@andromeda.bc.edu -L {local_port}:localhost:{unused_port} ssh -T -N {node} -L {unused_port}:localhost:{remote_port}
-
-- To mount the cluster's filesystem locally (e.g., enabling use of local development environment)
-
-   - Linux:
-
-      .. code-block:: none
-      
-         > sudo umount -l {local_mount_point}; sshfs {user}@andromeda.bc.edu:{remote_path} {local_mount_point}
-
-   - MacOS: Install `FUSE for macOS <https://osxfuse.github.io/>`_ and their SSHFS plugin
-   - Windows: Install `sshfs-win <https://github.com/winfsp/sshfs-win>`_
-
-
 Filesystem
 ----------
 - The BC-CV's main directory is located at ``/mmfs1/data/projects/weilab``. It's commonly used to share large files like datasets.
