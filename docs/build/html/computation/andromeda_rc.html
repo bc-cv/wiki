@@ -126,44 +126,6 @@
 <p class="admonition-title">Tip</p>
 <p>It is recommended to setup <a class="reference external" href="https://stackoverflow.com/a/21467504/10702372">passwordless SSH login</a> for both convenience and security</p>
 </div>
-<ul>
-<li><p>To forward X11 from <code class="docutils literal notranslate"><span class="pre">l001</span></code> (not recommended; either host a webpage whose port can be exposed or setup NoMachine)</p>
-<blockquote>
-<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; ssh -X {user}@andromeda.bc.edu
-</pre></div>
-</div>
-</div></blockquote>
-</li>
-<li><p>Expose a port on <code class="docutils literal notranslate"><span class="pre">l001</span></code> (e.g., to access a Jupyter/Neuroglancer server)</p>
-<blockquote>
-<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; ssh -L {local_port}:localhost:{remote_port} -N -T {user}@andromeda.bc.edu
-</pre></div>
-</div>
-</div></blockquote>
-</li>
-<li><p>Expose a port on <code class="docutils literal notranslate"><span class="pre">{node}</span></code> (e.g., to access a service run by a job)</p>
-<blockquote>
-<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; ssh -t -t {user}@andromeda.bc.edu -L {local_port}:localhost:{unused_port} ssh -T -N {node} -L {unused_port}:localhost:{remote_port}
-</pre></div>
-</div>
-</div></blockquote>
-</li>
-<li><p>To mount the cluster’s filesystem locally (e.g., enabling use of local development environment)</p>
-<blockquote>
-<div><ul>
-<li><p>Linux:</p>
-<blockquote>
-<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; sudo umount -l {local_mount_point}; sshfs {user}@andromeda.bc.edu:{remote_path} {local_mount_point}
-</pre></div>
-</div>
-</div></blockquote>
-</li>
-<li><p>MacOS: Install <a class="reference external" href="https://osxfuse.github.io/">FUSE for macOS</a> and their SSHFS plugin</p></li>
-<li><p>Windows: Install <a class="reference external" href="https://github.com/winfsp/sshfs-win">sshfs-win</a></p></li>
-</ul>
-</div></blockquote>
-</li>
-</ul>
 </section>
 <section id="filesystem">
 <h2>Filesystem<a class="headerlink" href="#filesystem" title="Link to this heading"></a></h2>
