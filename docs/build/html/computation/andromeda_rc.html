@@ -1,22 +1,24 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Andromeda Linux Cluster &mdash; Intern-Wiki  documentation</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/_static/css/custom.css" />
+
+  
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../_static/doctools.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -29,12 +31,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html">
-            <img src="../_static/bccv-logo_100.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/bccv-logo_100.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -48,12 +54,15 @@
 <p class="caption" role="heading"><span class="caption-text">Computation</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Andromeda Linux Cluster</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#setup-bc-id">Setup BC ID</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#connecting-to-the-cluster">Connecting to the cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#filesystem">Filesystem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#modules">Modules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#conda">Conda</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#slurm">SLURM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced">Advanced</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#port-forwarding">Port Forwarding</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#faq">FAQ</a></li>
 </ul>
 </li>
@@ -79,8 +88,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Andromeda Linux Cluster</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Andromeda Linux Cluster</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/computation/andromeda_rc.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -91,47 +100,33 @@
            <div itemprop="articleBody">
              
   <section id="andromeda-linux-cluster">
-<h1>Andromeda Linux Cluster<a class="headerlink" href="#andromeda-linux-cluster" title="Permalink to this heading"></a></h1>
+<h1>Andromeda Linux Cluster<a class="headerlink" href="#andromeda-linux-cluster" title="Link to this heading"></a></h1>
 <p>The <a class="reference external" href="https://www.bc.edu/bc-web/offices/its/services/research-services/linux-cluster.html">Andromeda Linux Cluster</a> runs the SLURM scheduler to execute jobs.</p>
-<section id="setup-bc-id">
-<h2>Setup BC ID<a class="headerlink" href="#setup-bc-id" title="Permalink to this heading"></a></h2>
-<ul class="simple">
-<li><p>Ask Prof. Wei to request a BC ID for you</p></li>
-<li><p>Using Initial password,  Go To:</p></li>
-</ul>
-<p><a class="reference external" href="https://portal.bc.edu/portal/page/portal/MyServices/Login">https://portal.bc.edu/portal/page/portal/MyServices/Login</a>
-The Eagle ID number is the initial password</p>
-<ul class="simple">
-<li><p>If applicable:</p></li>
-</ul>
-<p>Secondary password – this link is for help with BC Gmail:
-<a class="reference external" href="https://www.bc.edu/content/bc-web/offices/its/support/account-network-access/basics.html#secondary_password">https://www.bc.edu/content/bc-web/offices/its/support/account-network-access/basics.html#secondary_password</a></p>
-</section>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If necessary, contact <a class="reference external" href="mailto:donglai&#46;wei&#37;&#52;&#48;bc&#46;edu">Professor Wei</a> to request a BC ID. Additional information can be found on the <a class="reference external" href="https://www.bc.edu/content/bc-web/offices/its/support/account-network-access/basics.html#tab-bc_password">Boston College website</a></p>
+</div>
 <section id="connecting-to-the-cluster">
-<h2>Connecting to the cluster<a class="headerlink" href="#connecting-to-the-cluster" title="Permalink to this heading"></a></h2>
+<h2>Connecting to the cluster<a class="headerlink" href="#connecting-to-the-cluster" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are off campus, it’s necessary to first connect to <a class="reference external" href="https://bcservices.bc.edu/service/cisco-anyconnect-vpn">Eagle VPN</a>, which is available on Windows, Mac, and Linux.</p>
+</div>
+<p>Users can log into the cluster via Secure Shell. Below are some helpful commands:</p>
+<ul class="simple">
+<li><p>Connect to login node of Andromeda from local machine: <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">{user}&#64;andromeda.bc.edu</span></code></p></li>
+<li><p>Run an interactive bash shell from login node (CPU only): <code class="docutils literal notranslate"><span class="pre">interactive</span></code></p></li>
+<li><p>Run an interactive bash shell from login node (with GPU): <code class="docutils literal notranslate"><span class="pre">srun</span> <span class="pre">-t</span> <span class="pre">12:00:00</span> <span class="pre">-N</span> <span class="pre">1</span> <span class="pre">-n</span> <span class="pre">1</span> <span class="pre">--mem=32gb</span> <span class="pre">--partition=gpua100</span> <span class="pre">--gpus-per-node=1</span> <span class="pre">--pty</span> <span class="pre">bash</span></code></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Resources on the login node are limited and split among all users. Users spending a protracted session on the cluster are asked to run <code class="docutils literal notranslate"><span class="pre">interactive</span></code> as a courtesy to other users.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>It is recommended to setup <a class="reference external" href="https://stackoverflow.com/a/21467504/10702372">passwordless SSH login</a> for both convenience and security</p>
+</div>
 <ul>
-<li><p>If you are off campus, connect to <a class="reference external" href="https://bcservices.bc.edu/service/cisco-anyconnect-vpn">Eagle VPN</a> (Linux/macOS/Windows supported) first. Alternatively, on Linux systems, you can use <a class="reference external" href="https://www.infradead.org/openconnect/">OpenConnect</a> with the following command:</p>
-<blockquote>
-<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; printf &quot;{password}\n1&quot; | openconnect -u &quot;{user}&quot; --passwd-on-stdin eaglevpn.bc.edu
-</pre></div>
-</div>
-<p>where <code class="docutils literal notranslate"><span class="pre">{password}</span></code> is your BC password and <code class="docutils literal notranslate"><span class="pre">{user}</span></code> is your BC username (without &#64;bc.edu).</p>
-</div></blockquote>
-</li>
-<li><p>Secure SHell (SSH) into the root node of Andromeda (<code class="docutils literal notranslate"><span class="pre">l001</span></code>)</p>
-<blockquote>
-<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; ssh {user}@andromeda.bc.edu
-</pre></div>
-</div>
-</div></blockquote>
-</li>
-<li><p>To SSH into <code class="docutils literal notranslate"><span class="pre">{node}</span></code> in the <code class="docutils literal notranslate"><span class="pre">l001</span></code> shell</p>
-<blockquote>
-<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; ssh {node}
-</pre></div>
-</div>
-</div></blockquote>
-</li>
 <li><p>To forward X11 from <code class="docutils literal notranslate"><span class="pre">l001</span></code> (not recommended; either host a webpage whose port can be exposed or setup NoMachine)</p>
 <blockquote>
 <div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; ssh -X {user}@andromeda.bc.edu
@@ -168,174 +163,96 @@ The Eagle ID number is the initial password</p>
 </ul>
 </div></blockquote>
 </li>
-<li><p>It is recommended to setup <a class="reference external" href="https://stackoverflow.com/a/21467504/10702372">passwordless SSH login</a> for both convenience and security</p></li>
 </ul>
 </section>
 <section id="filesystem">
-<h2>Filesystem<a class="headerlink" href="#filesystem" title="Permalink to this heading"></a></h2>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">/mmfs1/data/bccv</span></code>: BC-CV’s main directory, used to share dataset files etc.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">/mmfs1/data/{user}</span></code>: home directory on NFS; backed up daily; other users have no access</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">/scratch/{user}</span></code>: directory on NFS to store (large) temporary files; not backed up; other users have access (can be used to share files)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">/local</span></code>: directory <strong>specific to each node</strong> (<code class="docutils literal notranslate"><span class="pre">/local</span></code> is different on <code class="docutils literal notranslate"><span class="pre">l001</span></code> and <code class="docutils literal notranslate"><span class="pre">g001</span></code>); usage is discouraged</p></li>
+<h2>Filesystem<a class="headerlink" href="#filesystem" title="Link to this heading"></a></h2>
+<ul>
+<li><p>The BC-CV’s main directory is located at <code class="docutils literal notranslate"><span class="pre">/mmfs1/data/projects/weilab</span></code>. It’s commonly used to share large files like datasets.</p></li>
+<li><p>The user home directory is located at  <code class="docutils literal notranslate"><span class="pre">/mmfs1/data/{user}</span></code>. Daily backups are automatically made.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>These backups are found at <code class="docutils literal notranslate"><span class="pre">/mmfs1/data/{user}/.snapshots</span></code>.</p></li>
 </ul>
+</div></blockquote>
+</li>
+<li><p>Each user has a directory <code class="docutils literal notranslate"><span class="pre">/scratch/{user}</span></code> that can store large temporary files. Unlike the home directory, it isn’t backed up.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Users should contact <a class="reference external" href="mailto:qiuwa&#37;&#52;&#48;bc&#46;edu">Wei Qiu</a> and ask to be added to Professor Wei’s group in order to get access to <code class="docutils literal notranslate"><span class="pre">/mmfs1/data/projects/weilab</span></code>.</p>
+</div>
 </section>
 <section id="modules">
-<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this heading"></a></h2>
+<h2>Modules<a class="headerlink" href="#modules" title="Link to this heading"></a></h2>
 <p>Andromeda uses the <a class="reference external" href="https://modules.readthedocs.io/en/latest/">Modules package</a> to manage packages that influence the shell environment.</p>
-<ul>
-<li><p>List available modules</p>
-<blockquote>
-<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; module avail
-</pre></div>
-</div>
-</div></blockquote>
-</li>
-<li><p>Load a module to make commands available</p>
-<blockquote>
-<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; module load {module}
-</pre></div>
-</div>
-</div></blockquote>
-</li>
-<li><p>Unload all modules</p>
-<blockquote>
-<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; module purge
-</pre></div>
-</div>
-</div></blockquote>
-</li>
+<ul class="simple">
+<li><p>List available module: <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">avail</span></code></p></li>
+<li><p>List loaded modules: <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">list</span></code></p></li>
+<li><p>Load a module: <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">{module}</span></code></p></li>
+<li><p>Unload all modules: <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">purge</span></code></p></li>
 </ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
 <p>To avoid having to load modules every time you SSH, you can append the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span></code> commands at the end of your <code class="docutils literal notranslate"><span class="pre">~/.tcshrc</span></code> file.</p>
+</div>
 </section>
 <section id="conda">
-<h2>Conda<a class="headerlink" href="#conda" title="Permalink to this heading"></a></h2>
-<p>It is recommended to use Conda to manage Python packages to ensure reproducibility and minimize conflicts between project dependencies. For a primer on Conda see the following <a class="reference external" href="https://conda.io/projects/conda/en/latest/user-guide/cheatsheet.html">cheatsheet</a> To use Conda, load the <code class="docutils literal notranslate"><span class="pre">anaconda</span></code> module.</p>
-<p>Useful commands:</p>
-<ul>
-<li><p>List all environments</p>
-<blockquote>
-<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; conda info --envs
-</pre></div>
-</div>
-</div></blockquote>
-</li>
-<li><p>Create a new environment</p>
-<blockquote>
-<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; conda create --name {env_name} python={version}
-</pre></div>
-</div>
-</div></blockquote>
-</li>
-<li><p>Activate an environment</p>
-<blockquote>
-<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; conda activate {env_name}
-</pre></div>
-</div>
-</div></blockquote>
-</li>
-<li><p>Install packages in current environment</p>
-<blockquote>
-<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; conda install {package1} {package2} ...
-</pre></div>
-</div>
-</div></blockquote>
-</li>
-<li><p>Uninstall packages in current environment</p>
-<blockquote>
-<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; conda uninstall {package1} {package2} ...
-</pre></div>
-</div>
-</div></blockquote>
-</li>
-</ul>
+<h2>Conda<a class="headerlink" href="#conda" title="Link to this heading"></a></h2>
+<p>It is recommended to use Conda (a Python package manager) to minimize conflicts between projects’ dependencies. For a primer on Conda see the following <a class="reference external" href="https://conda.io/projects/conda/en/latest/user-guide/cheatsheet.html">cheatsheet</a>. To use Conda, load the <code class="docutils literal notranslate"><span class="pre">anaconda</span></code> module.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
 <p>Using <a class="reference external" href="https://mamba.readthedocs.io/en/latest/installation.html">Mamba</a> (a drop-in replacement for Conda) can significantly speed up package installation.</p>
+</div>
 </section>
 <section id="slurm">
-<h2>SLURM<a class="headerlink" href="#slurm" title="Permalink to this heading"></a></h2>
+<h2>SLURM<a class="headerlink" href="#slurm" title="Link to this heading"></a></h2>
 <p>Although long running tasks can technically be run on <code class="docutils literal notranslate"><span class="pre">l001</span></code> (by using <code class="docutils literal notranslate"><span class="pre">screen</span></code> or <code class="docutils literal notranslate"><span class="pre">tmux</span></code>), computationally intensive jobs should be run through SLURM scheduler. To use SLURM, load the <code class="docutils literal notranslate"><span class="pre">slurm</span></code> module.</p>
-<ul>
-<li><p>To view statuses of nodes on all partitions (e.g., to find idle partitions)</p>
-<blockquote>
-<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; sinfo
-</pre></div>
-</div>
-</div></blockquote>
-</li>
-<li><p>To view detailed stats of nodes on all partitions (e.g., to find available RAM/number of cores per node)</p>
-<blockquote>
-<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; sinfo --Node --long
-</pre></div>
-</div>
-</div></blockquote>
-</li>
-<li><p>To view all queued jobs</p>
-<blockquote>
-<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; squeue
-</pre></div>
-</div>
-</div></blockquote>
-</li>
-<li><p>To view your queued jobs</p>
-<blockquote>
-<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; squeue -u {user}
-</pre></div>
-</div>
-</div></blockquote>
-</li>
-<li><p>To submit a job</p>
-<blockquote>
-<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; sbatch {job_script}
-</pre></div>
-</div>
-<p>An example SLURM job script (<a class="reference external" href="https://slurm.schedmd.com/sbatch.html">more details</a>):</p>
-<blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/tcsh -e</span>
+<ul class="simple">
+<li><p>To view statuses of all nodes: <code class="docutils literal notranslate"><span class="pre">sinfo</span></code></p></li>
+<li><p>To view detailed info of all nodes: <code class="docutils literal notranslate"><span class="pre">sinfo</span> <span class="pre">--Node</span> <span class="pre">--long</span></code></p></li>
+<li><p>To view all queued jobs: <code class="docutils literal notranslate"><span class="pre">squeue</span></code></p></li>
+<li><p>To view your queued jobs: <code class="docutils literal notranslate"><span class="pre">squeue</span> <span class="pre">-u</span> <span class="pre">{user}</span></code></p></li>
+<li><p>To submit a job: <code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">{job_script}</span></code></p></li>
+</ul>
+<p>A basic SLURM job script is provided below; more details can be found <a class="reference external" href="https://slurm.schedmd.com/sbatch.html">here</a>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/tcsh -e</span>
 <span class="c1">#SBATCH --job-name=example-job # job name</span>
 <span class="c1">#SBATCH --nodes=1 # how many nodes to use for this job</span>
 <span class="c1">#SBATCH --ntasks=1</span>
-<span class="c1">#SBATCH --cpus-per-task 48 # how many CPU-cores to use for this job (see )</span>
-<span class="c1">#SBATCH --mem=190GB # how much RAM to allocate</span>
-<span class="c1">#SBATCH --time=120:00:00 # job execution time limit hrs:min:sec</span>
+<span class="c1">#SBATCH --cpus-per-task 48 # how many CPU-cores to use for this job</span>
+<span class="c1">#SBATCH --mem=128GB # how much RAM to allocate</span>
+<span class="c1">#SBATCH --time=120:00:00 # job execution time limit formatted hrs:min:sec</span>
 <span class="c1">#SBATCH --mail-type=BEGIN,END,FAIL. # mail events (NONE, BEGIN, END, FAIL, ALL)</span>
 <span class="c1">#SBATCH --mail-user={user}@bc.edu # where to send mail</span>
 <span class="c1">#SBATCH --partition=partial_nodes,gpuv100,gpua100 # see sinfo for available partitions</span>
 
 <span class="c1">#SBATCH --output=main_%j.out</span>
 
-module purge <span class="c1"># clear all modules</span>
-module load slurm <span class="c1"># to allow sub-scripts to use SLURM commands</span>
-module load cuda11.2 <span class="c1"># for gpuv100/gpua100 partitions only</span>
+hostname<span class="w"> </span><span class="c1"># print the node which the job is running on</span>
 
-module load anaconda
-conda activate clean_dendrite
+module<span class="w"> </span>purge<span class="w"> </span><span class="c1"># clear all modules</span>
+module<span class="w"> </span>load<span class="w"> </span>slurm<span class="w"> </span><span class="c1"># to allow sub-scripts to use SLURM commands</span>
+module<span class="w"> </span>load<span class="w"> </span>anaconda
 
-hostname <span class="c1"># print the node which the job is running on</span>
-
-...
+conda<span class="w"> </span>activate<span class="w"> </span><span class="o">{</span>my_env<span class="o">}</span>
+<span class="o">{</span>more<span class="w"> </span>commands...<span class="o">}</span>
 </pre></div>
 </div>
-</div></blockquote>
-</div></blockquote>
-</li>
-<li><p>To run a job script <a class="reference external" href="https://stackoverflow.com/questions/43767866/slurm-srun-vs-sbatch-and-their-parameters">interactively</a> (e.g., for <code class="docutils literal notranslate"><span class="pre">pdb</span></code> debugging)</p>
-<blockquote>
-<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; srun {flags} {job_script}
+</section>
+<section id="advanced">
+<h2>Advanced<a class="headerlink" href="#advanced" title="Link to this heading"></a></h2>
+<section id="port-forwarding">
+<h3>Port Forwarding<a class="headerlink" href="#port-forwarding" title="Link to this heading"></a></h3>
+<p>Port forwarding is useful for accessing services from a job (e.g. Jupyter notebooks, Tensorboard). Suppose that a user is running a service on node <code class="docutils literal notranslate"><span class="pre">{node}</span></code> that is exposed to port <code class="docutils literal notranslate"><span class="pre">{port_2}</span></code>. To recieve the node’s services on your local machine:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span><span class="o">{</span>user<span class="o">}</span>@andromeda.bc.edu<span class="w"> </span>-L<span class="w"> </span><span class="o">{</span>local_port<span class="o">}</span>:localhost:<span class="o">{</span>port_1<span class="o">}</span><span class="w"> </span>ssh<span class="w"> </span>-T<span class="w"> </span>-N<span class="w"> </span><span class="o">{</span>node<span class="o">}</span><span class="w"> </span>-L<span class="w"> </span><span class="o">{</span>port_1<span class="o">}</span>:localhost:<span class="o">{</span>port_2<span class="o">}</span>
 </pre></div>
 </div>
-<p>Note that <code class="docutils literal notranslate"><span class="pre">srun</span></code> does not read the <code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code> directives in the job script; flags must be specified manually.</p>
-</div></blockquote>
-</li>
-</ul>
+</section>
 </section>
 <section id="faq">
-<h2>FAQ<a class="headerlink" href="#faq" title="Permalink to this heading"></a></h2>
+<h2>FAQ<a class="headerlink" href="#faq" title="Link to this heading"></a></h2>
 <ul>
-<li><p><strong>Q:</strong> My SLURM jobs emit <code class="docutils literal notranslate"><span class="pre">ERROR:</span> <span class="pre">No</span> <span class="pre">such</span> <span class="pre">file</span> <span class="pre">or</span> <span class="pre">directory</span> <span class="pre">on</span> <span class="pre">'/cm/local/modulefiles/slurm/slurm/19.05.8'</span></code></p>
-<blockquote>
-<div><p><strong>A:</strong> Replace <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">slurm</span></code> with <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">slurm/slurm/19.05.7</span></code> in <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> and <code class="docutils literal notranslate"><span class="pre">.tcshrc</span></code></p>
-</div></blockquote>
-</li>
 <li><p><strong>Q:</strong> My SLURM jobs running Python raises <code class="docutils literal notranslate"><span class="pre">ImportError:</span></code> despite having <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">anaconda;</span> <span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">{my_env}</span></code></p>
 <blockquote>
 <div><p><strong>A:</strong> Try adding <code class="docutils literal notranslate"><span class="pre">which</span> <span class="pre">python</span></code> to the beginning of the script to see which Python binary is being used. If it is not the binary of your conda environment, hardcode the path to the Python binary.</p>
@@ -366,7 +283,7 @@ hostname <span class="c1"># print the node which the job is running on</span>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, BCCV, Boston College.</p>
+    <p>&#169; Copyright 2024, BCCV, Boston College.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
