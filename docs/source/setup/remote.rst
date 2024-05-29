@@ -1,21 +1,11 @@
 Remote
 =======================
 
-BC RC server
+Contact Prof. Wei to apply it for you
 -------------------------------------------
 
-- email: researchservices@bc.edu with the following info and cc'ed `weidf@bc.edu`
+- BC ID (for non-BC ppl)
 
-  = subject: Request for a cluster account on Andromeda
+- BC Research Computing cluster
 
-  = name of the faculty member: Donglai Wei
-
-  = name of the account holder and email
-
-
-Slack (contact Admin)
-------------------------
-
-- bc-cv.slack.com
-
-- pytorchconnectomics.slack.com
+- Slack: pytorchconnectomics.slack.com
