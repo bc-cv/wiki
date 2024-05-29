@@ -1,6 +1,8 @@
 On-Campus
 ========================
 
+- Office key: Contact Prof. Wei on it
+
 -  `Wi-Fi (eduroam) <https://www.bc.edu/bc-web/offices/its/support/account-network-access/internet.html>`_
 
 - `ID office  <https://www.bc.edu/bc-web/offices/student-services/billing-student-accounts/id-cards.html>`_: Lyons Hall 103
