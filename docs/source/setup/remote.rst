@@ -1,7 +1,7 @@
 Remote
 =======================
 
-Contact Prof. Wei to apply it for you
+Contact Prof. Wei for the applications
 -------------------------------------------
 
 - BC ID (for non-BC ppl)
