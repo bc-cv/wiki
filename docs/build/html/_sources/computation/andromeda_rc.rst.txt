@@ -65,12 +65,13 @@ A basic SLURM job script is provided below; more details can be found `here <htt
     #SBATCH --job-name=example-job # job name
     #SBATCH --nodes=1 # how many nodes to use for this job
     #SBATCH --ntasks=1
-    #SBATCH --cpus-per-task 48 # how many CPU-cores to use for this job
-    #SBATCH --mem=128GB # how much RAM to allocate
+    #SBATCH --cpus-per-task 8 # how many CPU-cores (per node) to use for this job
+    #SBATCH --gpus-per-task 1 # how many GPUs (per node) to use for this job
+    #SBATCH --mem=16GB # how much RAM (per node) to allocate
     #SBATCH --time=120:00:00 # job execution time limit formatted hrs:min:sec
     #SBATCH --mail-type=BEGIN,END,FAIL. # mail events (NONE, BEGIN, END, FAIL, ALL)
     #SBATCH --mail-user={user}@bc.edu # where to send mail
-    #SBATCH --partition=partial_nodes,gpuv100,gpua100 # see sinfo for available partitions
+    #SBATCH --partition=gpuv100,gpua100 # see sinfo for available partitions
 
     #SBATCH --output=main_%j.out
     
